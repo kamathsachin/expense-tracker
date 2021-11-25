@@ -40,6 +40,7 @@ const ExpenseForm = (props) => {
           <label>Expense Desc.</label>
           <input
             type="text"
+            required
             value={newExpenseDesc}
             onChange={descChangeHandler}
           ></input>
@@ -50,6 +51,7 @@ const ExpenseForm = (props) => {
             type="text"
             min="0.01"
             step="0.01"
+            required
             value={newExpenseAmt}
             onChange={amtChangeHandler}
           ></input>
@@ -60,12 +62,16 @@ const ExpenseForm = (props) => {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            required
             value={newExpenseDt}
             onChange={dateChangeHandler}
           ></input>
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

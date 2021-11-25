@@ -12,14 +12,22 @@ const NewExpense = (props) => {
     };
 
     props.onAddNewExpense(savedExpense);
+    setIsEditing(false);
   };
 
   const startEditingHandler = () => {
     setIsEditing(true);
   };
 
+  const stopEditingHandler = () => {
+    setIsEditing(false);
+  };
+
   const displayForm = IsEditing ? (
-    <ExpenseForm onSaveEnteredExpense={saveExpenseHandler} />
+    <ExpenseForm
+      onSaveEnteredExpense={saveExpenseHandler}
+      onCancel={stopEditingHandler}
+    />
   ) : (
     <button onClick={startEditingHandler}>Add New Expense</button>
   );
